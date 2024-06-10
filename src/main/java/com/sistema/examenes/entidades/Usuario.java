@@ -1,5 +1,6 @@
 package com.sistema.examenes.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -25,6 +26,7 @@ public class Usuario {
     private String perfil;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "usuario")
+    @JsonIgnore //es para deserializar - es decir ya no coloca el array del usuariorol en la api
     private Set<UsuarioRol> usuarioRoles = new HashSet<>();
 
     // Añadimos este método para asegurarnos de que JPA maneje correctamente el campo 'enabled'

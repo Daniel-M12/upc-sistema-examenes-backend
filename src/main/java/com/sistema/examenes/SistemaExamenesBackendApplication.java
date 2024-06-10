@@ -13,11 +13,44 @@ import java.util.HashSet;
 import java.util.Set;
 
 @SpringBootApplication
-public class SistemaExamenesBackendApplication  {
+public class SistemaExamenesBackendApplication implements CommandLineRunner {
 
+	@Autowired
+	private UsuarioService usuarioService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SistemaExamenesBackendApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		/*Usuario usuario = new Usuario();
+		usuario.setNombre("Gabo");
+		usuario.setApellido("Negron");
+		usuario.setUsername("Gabo");
+		usuario.setPassword("123");
+		usuario.setEmail("gabo@gmail.com");
+		usuario.setTelefono("981958262");
+		usuario.setPerfil("foto.png");
+
+		Rol rol = new Rol();
+		rol.setRolid(1L);
+		rol.setNombre("ADMIN");
+
+		Set<UsuarioRol> usuarioRoles = new HashSet<>();
+		UsuarioRol usuarioRol = new UsuarioRol();
+		usuarioRol.setRol(rol);
+		usuarioRol.setUsuario(usuario);
+		usuarioRoles.add(usuarioRol);
+
+		try {
+			Usuario usuarioGuardado = usuarioService.guardarUsuario(usuario, usuarioRoles);
+			System.out.println("Usuario guardado: " + usuarioGuardado.getUsername());
+		} catch (Exception e) {
+			System.err.println("Error al guardar el usuario: " + e.getMessage());
+		}
+
+		 */
 	}
 
 
