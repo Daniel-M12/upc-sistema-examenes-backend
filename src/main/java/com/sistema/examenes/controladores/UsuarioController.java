@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashSet;
 import java.util.Set;
 
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/usuarios")
+@CrossOrigin("*")
 public class UsuarioController {
 
     @Autowired
@@ -19,7 +21,8 @@ public class UsuarioController {
 
     @PostMapping("/")
     public Usuario guardarUsuario(@RequestBody Usuario usuario) throws Exception {
-        Set<UsuarioRol> roles = new HashSet<>();
+        usuario.setPerfil("default.png");
+        Set<UsuarioRol> usuarioRoles = new HashSet<>();
 
         Rol rol = new Rol();
         rol.setRolid(2L);
@@ -29,7 +32,8 @@ public class UsuarioController {
         usuarioRol.setUsuario(usuario);
         usuarioRol.setRol(rol);
 
-        return usuarioService.guardarUsuario(usuario,roles);
+        usuarioRoles.add(usuarioRol);
+        return usuarioService.guardarUsuario(usuario,usuarioRoles);
 
     }
     @GetMapping("/{username}")
